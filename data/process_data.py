@@ -26,7 +26,7 @@ def clean_data(messages,categories):
     # set each value to be the last character of the string
          categories[column] = categories[column].str.split('-',expand=True)[1]
         # convert column from string to numeric
-         categories[column] = categories[column].astype(bool)
+         categories[column] = categories[column].astype(int).astype(bool).astype(int)
     # drop the original categories column from `df`
     df.drop('categories',axis=1, inplace=True)
     # drop the original column from `df`
