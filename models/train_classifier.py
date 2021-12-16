@@ -19,7 +19,7 @@ def load_data(database_filepath):
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql("SELECT * FROM DisasterResponce", engine)
     X = df['message']
-    Y= df.drop(['id', 'message','genre'], axis=1).astype('int')
+    Y= df.drop(['id', 'message','genre'], axis=1)
     return  X, Y
 
 
