@@ -26,7 +26,7 @@ def clean_data(messages,categories):
     # set each value to be the last character of the string
          categories[column] = categories[column].str.split('-',expand=True)[1]
         # convert column from string to numeric
-         categories[column] = categories[column].astype(int)
+         categories[column] = categories[column].astype(bool)
     # drop the original categories column from `df`
     df.drop('categories',axis=1, inplace=True)
     # drop the original column from `df`
@@ -42,7 +42,7 @@ def clean_data(messages,categories):
 def save_data(df, database_filename):
     from sqlalchemy import create_engine
     engine = create_engine('sqlite:///{}'.format(database_filename))
-    df.to_sql('DisasterResponce', engine, index=False) 
+    df.to_sql('DisasterResponce', engine, index=False, if_exists='replace') 
 
 
 def main():
